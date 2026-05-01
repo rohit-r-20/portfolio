@@ -1,258 +1,884 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Rohit R - Personal CV Website</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="AI Engineer, Data Scientist, Portfolio" name="keywords">
-        <meta content="Personal CV of Rohit R, AI and Data Science Engineer" name="description">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rohit R - AI Engineer, Data Scientist, Portfolio">
+    <meta name="keywords" content="AI Engineer, Data Scientist, Machine Learning, Python Developer">
+    <title>Rohit R - AI Engineer & Data Scientist</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2d5a7b;
+            --accent: #d4af37;
+            --light-bg: #f8f7f4;
+            --dark-text: #1a1a1a;
+            --light-text: #555;
+        }
 
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Poppins&display=swap" rel="stylesheet"> 
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light-bg: #0f1e2f;
+                --dark-text: #f5f5f5;
+                --light-text: #bbb;
+            }
+        }
 
-        <!-- Font Awesome -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        body {
+            font-family: 'Times New Roman', 'Times', serif;
+            background: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    <body data-spy="scroll" data-target=".navbar" data-offset="51">
-        <div class="wrapper">
-            <div class="sidebar">
-                <div class="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
-                    <img class="w-100 img-fluid mb-4" src="img/profile.jpg" alt="Image">
-                    <h1 class="mt-2">Rohit R</h1>
-                    <div class="mb-4" style="height: 22px;">
-                        <h4 class="typed-text-output d-inline-block text-body"></h4>
-                        <div class="typed-text d-none">AI Engineer, Data Scientist, Python Developer, Cyber Security Enthusiast</div>
-                    </div>
-                    <div class="d-flex justify-content-center mt-auto mb-3">
-                        <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="mx-2" href="https://github.com/rohit-r-20"><i class="fab fa-github"></i></a>
-                        <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="d-flex align-items-end justify-content-between">
-                        <a href="Resume.pdf" class="btn btn-block border-right" download>Download Resume</a>
-                        <a href="mailto:vrrohit2020@gmail.com" class="btn btn-block">Contact Me</a>
+        /* Header & Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            animation: slideInDown 1s ease-out;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-section {
+            perspective: 1000px;
+            animation: fadeInLeft 1.2s ease-out;
+        }
+
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border: 4px solid var(--accent);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--accent);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+
+        .photo-placeholder-text {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .header-text {
+            animation: fadeInRight 1.2s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .bio {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Skills Section */
+        .section {
+            padding: 80px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .skill-category {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .skill-items {
+            font-size: 14px;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .project-title {
+            font-size: 22px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-tech {
+            font-size: 13px;
+            color: var(--accent);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            font-size: 15px;
+            color: var(--light-text);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .project-features {
+            font-size: 13px;
+            color: var(--light-text);
+            list-style: none;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .project-features li {
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .project-links a {
+            flex: 1;
+            padding: 8px 12px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            border-radius: 8px;
+            margin: 80px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1e2f;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        .internship-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            background: rgba(255,255,255,0.5);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .internship-card {
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .internship-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .internship-period {
+            font-size: 13px;
+            color: var(--light-text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">📷</div>
+                        <div class="photo-placeholder-text">Add Your Photo Here</div>
                     </div>
                 </div>
-                <div class="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
-                    <i class="fas fa-2x fa-angle-double-right text-primary"></i>
+                <p style="text-align: center; margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.8);">
+                    Replace with your professional image
+                </p>
+            </div>
+            
+            <div class="header-text">
+                <h1>Rohit R</h1>
+                <p class="subtitle">AI Engineer & Data Scientist</p>
+                <p class="bio">
+                    Specialized in Machine Learning, Deep Learning, and Large Language Models. 
+                    Building intelligent systems and data-driven solutions with Python, FastAPI, 
+                    and cloud technologies. Experienced in RAG, ETL pipelines, and scalable backend architecture.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:vrrohit2020@gmail.com" class="btn btn-primary">Contact Me</a>
+                    <a href="#projects" class="btn btn-secondary">View My Work</a>
                 </div>
             </div>
+        </div>
+    </div>
+</header>
 
-            <div class="content">
-                <!-- About Start -->
-                <div class="container bg-white py-5">
-                    <div class="row px-3">
-                        <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">About Me</h2>
-                        </div>
-                        <div class="col-12">
-                            <p>Motivated college student pursuing B.Tech in Artificial Intelligence and Data Science at Velammal Institution of Technology, Panchetti. Skilled in Python, AI, and emerging technologies, with interests in NLP, Computer Vision, and Robotics. Passionate about using AI to solve real-world problems and constantly improving through projects and internships.</p>
-                            <div class="row">
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Name:</h5> Rohit R
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Birthday:</h5> —
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Degree:</h5> B.Tech – Artificial Intelligence & Data Science
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Experience:</h5> Internships (GrowAI, Trekcodes)
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Phone:</h5> +91 9498050929
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Email:</h5> vrrohit2020@gmail.com
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Address:</h5> Tamil Nadu, India
-                                </div>
-                                <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Freelance:</h5> Available
-                                </div>
-                            </div>
-                        </div>
+<main>
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-category">Programming</div>
+                    <div class="skill-items">
+                        Python, SQL, Java, R<br>
+                        FastAPI, REST APIs<br>
+                        Linux, Git
                     </div>
                 </div>
-                <!-- About End -->
-
-                <!-- Skills Start -->
-                <div class="container bg-white py-5">
-                    <div class="row px-3">
-                        <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Skills</h2>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">Python</p>
-                                    <p class="mb-2">90%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">HTML & CSS</p>
-                                    <p class="mb-2">85%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">C & Java (Basics)</p>
-                                    <p class="mb-2">75%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">R Language</p>
-                                    <p class="mb-2">80%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">AI & Data Science Concepts</p>
-                                    <p class="mb-2">88%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-2">IoT & Cybersecurity</p>
-                                    <p class="mb-2">85%</p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skills End -->
-
-                <!-- Education Start -->
-                <div class="container bg-white py-5">
-                    <div class="row px-3">
-                        <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Expericence</h2>
-                        </div>
-                        <div class="col-12">
-                            <div class="border-left border-primary pt-2 pl-4 ml-2">
-                                <div class="position-relative mb-4">
-                                    <i class="fa fa-arrow-right text-primary position-absolute" style="top: 3px; left: -24px;"></i>
-                                    <h5 class="mb-1">Intern - Data Structures and Algorithms (Python)</h5>
-                                    <p class="mb-2">GrowAI | <small>Dec 2024 - Jan 2025</small></p>
-                                    <p>Worked on understanding and implementing DSA concepts using Python, enhancing problem-solving skills and efficiency in AI model development.</p>
-                                </div>
-                                <div class="position-relative mb-4">
-                                    <i class="fa fa-arrow-right text-primary position-absolute" style="top: 3px; left: -24px;"></i>
-                                    <h5 class="mb-1">Intern - Cybersecurity Attacks</h5>
-                                    <p class="mb-2">TrekCodes | <small>Aug 2024 - Sep 2024</small></p>
-                                    <p>Worked in the cybersecurity domain focusing on different attack methodologies, prevention techniques, and security tool usage on Parrot and Ubuntu OS.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Education End -->
                 
-                <!-- Subscribe Start -->
-                <div class="container bg-white py-5 px-0">
-                    <div class="bg-primary text-center p-5">
-                        <h1 class="text-white font-weight-bold">Subscribe My Newsletter</h1>
-                        <p class="text-white">Subscribe and get my latest articles and updates</p>
-                        <form class="form-inline justify-content-center">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-dark px-4" type="submit">Subscribe</button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="skill-card">
+                    <div class="skill-category">Machine Learning & AI</div>
+                    <div class="skill-items">
+                        Scikit-learn, TensorFlow<br>
+                        LangChain, LangGraph<br>
+                        RAG, ChromaDB
                     </div>
                 </div>
-                <!-- Subscribe End -->
+                
+                <div class="skill-card">
+                    <div class="skill-category">Data Science</div>
+                    <div class="skill-items">
+                        Pandas, NumPy<br>
+                        EDA, Feature Engineering<br>
+                        Statistical Analysis
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-category">Data Engineering</div>
+                    <div class="skill-items">
+                        ETL Pipelines<br>
+                        Data Cleaning & Transformation<br>
+                        AWS, Azure
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-category">Visualization & Tools</div>
+                    <div class="skill-items">
+                        Power BI, Tableau<br>
+                        Matplotlib, Seaborn<br>
+                        Data Visualization
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-category">Core Concepts</div>
+                    <div class="skill-items">
+                        Statistics, Probability<br>
+                        DBMS, OOP<br>
+                        Data Structures & Algorithms
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Services Start -->
-                <div class="container bg-white pt-5 pb-3">
-                    <div class="row px-3">
-                        <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Services</h2>
-                        </div>
-                        <div class="col-md-6 service-item text-center mb-3">
-                            <i class="fa fa-2x fa-robot mx-auto mb-4"></i>
-                            <h5 class="mb-2">IoT Smart Waste Management</h5>
-                            <p>Developed IoT-based smart waste management systems using Python and embedded tools to improve sustainability.</p>
-                        </div>
-                        <div class="col-md-6 service-item text-center mb-3">
-                            <i class="fa fa-2x fa-wheelchair mx-auto mb-4"></i>
-                            <h5 class="mb-2">Active Prosthetic Ankle</h5>
-                            <p>Designed adaptive prosthetic solutions and assistive devices for lower limb amputees using AI and embedded sensors.</p>
-                        </div>
-                        <div class="col-md-6 service-item text-center mb-3">
-                            <i class="fa fa-2x fa-paw mx-auto mb-4"></i>
-                            <h5 class="mb-2">Animal Poaching Prevention System</h5>
-                            <p>Developed an ML-powered wildlife monitoring system to detect poaching activities using camera and sensor data.</p>
-                        </div>
-                        <div class="col-md-6 service-item text-center mb-3">
-                            <i class="fa fa-2x fa-code mx-auto mb-4"></i>
-                            <h5 class="mb-2">AI and Data Solutions</h5>
-                            <p>Provide AI-driven solutions using NLP, ML, and data analytics for research and development projects.</p>
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="internship-info">
+                <div class="internship-card">
+                    <div class="internship-title">Cyber Security Intern</div>
+                    <div>Cyberforge Pvt. Ltd.</div>
+                    <div class="internship-period">Aug 2024 – Sep 2024</div>
+                    <div style="font-size: 13px; margin-top: 8px; color: var(--primary);">
+                        • 30% improvement in detection efficiency<br>
+                        • 25% reduction in security gaps
+                    </div>
+                </div>
+                
+                <div class="internship-card">
+                    <div class="internship-title">DSA Intern</div>
+                    <div>Intrainz</div>
+                    <div class="internship-period">Dec 2024 – Jan 2025</div>
+                    <div style="font-size: 13px; margin-top: 8px; color: var(--primary);">
+                        • 35% improvement in solution efficiency<br>
+                        • Optimized time complexity
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Autonomous AI Assistant</h3>
+                        <p class="project-tech">LangChain • LangGraph • RAG</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Intelligent AI assistant with persistent memory pipeline using LangChain and LangGraph with ReAct architecture.
+                        </p>
+                        <ul class="project-features">
+                            <li>1,000+ embeddings in ChromaDB vector database</li>
+                            <li>Retrieval-Augmented Generation (RAG)</li>
+                            <li>WebSocket-based real-time communication</li>
+                            <li>FastAPI scalable backend</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20">View Code</a>
+                            <a href="#">Demo</a>
                         </div>
                     </div>
                 </div>
-                <!-- Services End -->
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Business Intelligence System</h3>
+                        <p class="project-tech">Power BI • Tableau • Python</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Complete ETL pipeline for retail analytics with business dashboards for data-driven insights.
+                        </p>
+                        <ul class="project-features">
+                            <li>ETL pipeline for sales & customer data</li>
+                            <li>Data cleaning and transformation</li>
+                            <li>Interactive Power BI & Tableau dashboards</li>
+                            <li>Decision-making analytics</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20">View Code</a>
+                            <a href="#">Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Fresh Basket</h3>
+                        <p class="project-tech">Python • E-commerce</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Full-stack e-commerce platform for online retail with inventory and order management systems.
+                        </p>
+                        <ul class="project-features">
+                            <li>Product catalog management</li>
+                            <li>Shopping cart & checkout</li>
+                            <li>Order tracking system</li>
+                            <li>Responsive design</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20/Fresh-basket">View Code</a>
+                            <a href="#">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Code Complexity Visualizer</h3>
+                        <p class="project-tech">JavaScript • Visualization</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Interactive tool for analyzing and visualizing code complexity metrics in real-time.
+                        </p>
+                        <ul class="project-features">
+                            <li>Code complexity analysis</li>
+                            <li>Interactive visualizations</li>
+                            <li>Performance metrics</li>
+                            <li>Real-time reporting</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20/Code-complexity-visualizer">View Code</a>
+                            <a href="#">Open Tool</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Billing Software</h3>
+                        <p class="project-tech">TypeScript • Business</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Enterprise billing system with invoice generation, payment tracking, and customer management.
+                        </p>
+                        <ul class="project-features">
+                            <li>Invoice generation & management</li>
+                            <li>Payment tracking system</li>
+                            <li>Customer database</li>
+                            <li>Report generation</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20/Billing-Software">View Code</a>
+                            <a href="#">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Business Analyser AI</h3>
+                        <p class="project-tech">AI • Analytics • HTML</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            AI-powered tool for analyzing business metrics and generating actionable insights from data.
+                        </p>
+                        <ul class="project-features">
+                            <li>Business metric analysis</li>
+                            <li>Trend detection</li>
+                            <li>Insight generation</li>
+                            <li>Data visualization</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/rohit-r-20/Business-analyser-AI">View Code</a>
+                            <a href="#">Try It</a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
+    </section>
 
-        <!-- Back to Top -->
-        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!-- Contact Section -->
+    <div class="container">
+        <section class="contact-section">
+            <h2 style="font-size: 32px; margin-bottom: 30px;">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <a href="tel:+919498050929">+91 94980 50929</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:vrrohit2020@gmail.com">vrrohit2020@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Portfolio</strong>
+                    <a href="https://vrrohitportfolio.vercel.app/">vrrohitportfolio.vercel.app</a>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 20px; font-size: 16px;">Connect With Me</h3>
+            <div class="social-links">
+                <a href="https://github.com/rohit-r-20" title="GitHub">🐙</a>
+                <a href="https://linkedin.com/in/rohitr" title="LinkedIn">💼</a>
+                <a href="https://vrrohitportfolio.vercel.app/" title="Portfolio">🌐</a>
+                <a href="mailto:vrrohit2020@gmail.com" title="Email">✉️</a>
+            </div>
+        </section>
+    </div>
+</main>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/typed/typed.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/isotope/isotope.pkgd.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
+<footer>
+    <div class="container">
+        <p>© 2026 Rohit R. All rights reserved. | Crafted with precision and care</p>
+    </div>
+</footer>
 
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+<script>
+    // Add smooth animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, .skill-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+
+</body>
 </html>
